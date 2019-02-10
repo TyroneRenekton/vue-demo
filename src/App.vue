@@ -1,7 +1,6 @@
 <template>
   <div id="app" style="position : absolute; left: 0px; top: 0px; width: 100%; height: 100%">
-    <p style = "font-size:25px;">计数器: {{ counter }}</p>
-    <button @click = "counter++" style = "font-size:25px;">点我</button>
+    <div v-bind:class="{ active: isActive }"></div>
   </div>
 
 </template>
@@ -21,7 +20,8 @@ export default {
         {name : "c"},
         {name : "c"}
       ],
-      counter: 1
+      counter: 1,
+      isActive: true
     }
   },
   methods: {
@@ -35,17 +35,24 @@ export default {
     }
   }
 }
-document.documentElement.style.overflow = 'hidden';
-var move = function (e) {
-  e.preventDefault && e.preventDefault();
-  e.returnValue = false;
-  e.stopPropagation && e.stopPropagation();
-  return false;
-}
-var keyFunc = function (e) {
-  if (37 <= e.keyCode && e.keyCode <= 40) {
-    return move(e);
+  document.documentElement.style.overflow = 'hidden';
+  var move = function (e) {
+    e.preventDefault && e.preventDefault();
+    e.returnValue = false;
+    e.stopPropagation && e.stopPropagation();
+    return false;
   }
-}
-document.body.onkeydown = keyFunc;
+  var keyFunc = function (e) {
+    if (37 <= e.keyCode && e.keyCode <= 40) {
+      return move(e);
+    }
+  }
+  document.body.onkeydown = keyFunc;
 </script>
+<style>
+  .active {
+    width: 100px;
+    height: 100px;
+    background: green;
+  }
+</style>
