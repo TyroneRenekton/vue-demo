@@ -1,9 +1,7 @@
 <template>
   <div id="app" style="position : absolute; left: 0px; top: 0px; width: 100%; height: 100%">
-    <li v-for="i in sites">
-      {{i.name}}
-    </li>
-
+    <p style = "font-size:25px;">计数器: {{ counter }}</p>
+    <button @click = "counter++" style = "font-size:25px;">点我</button>
   </div>
 
 </template>
@@ -22,12 +20,18 @@ export default {
         {name : "c"},
         {name : "c"},
         {name : "c"}
-      ]
+      ],
+      counter: 1
     }
   },
   methods: {
     onSubmit() {
       console.log('submit!');
+    }
+  },
+  watch: {
+    counter: function (nval, oval) {
+      alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
     }
   }
 }
