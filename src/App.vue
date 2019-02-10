@@ -1,10 +1,9 @@
 <template>
   <div id="app" style="position : absolute; left: 0px; top: 0px; width: 100%; height: 100%">
-    <p> {{message}}</p>
-    <h1> {{site}}</h1>
-    <div v-html="message">
-    </div>
-    <span v-if = "seen">我是span标签，你可以看到我吗</span>
+    <li v-for="i in sites">
+      {{i.name}}
+    </li>
+
   </div>
 
 </template>
@@ -18,7 +17,12 @@ export default {
       site: "菜鸟教程",
       url: "www.runoob.com",
       alexa: "10000",
-      seen: false
+      seen: false,
+      sites: [
+        {name : "c"},
+        {name : "c"},
+        {name : "c"}
+      ]
     }
   },
   methods: {
